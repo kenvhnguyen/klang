@@ -16,17 +16,26 @@ class TestConventions {
     }
 
     // Test InRange.kt
-    fun doTest(date: MyDate, first: MyDate, last: MyDate, shouldBeInRange: Boolean) {
+    fun doTest1(date: MyDate, first: MyDate, last: MyDate, shouldBeInRange: Boolean) {
         val message = "${date} should${if (shouldBeInRange) "" else "n't"} be in ${DateRange(first, last)}"
         Assert.assertEquals(message, shouldBeInRange, checkInRange(date, first, last))
     }
     @Test fun `test if a date is in range`() {
-        doTest(MyDate(2018, 3, 22), MyDate(2018, 1, 1), MyDate(2019, 1, 1), shouldBeInRange = true)
+        doTest1(MyDate(2018, 3, 22), MyDate(2018, 1, 1), MyDate(2019, 1, 1), shouldBeInRange = true)
     }
     @Test fun `test if a date is before a range`() {
-        doTest(MyDate(2017, 3, 22), MyDate(2018, 1, 1), MyDate(2019, 1, 1), shouldBeInRange = false)
+        doTest1(MyDate(2017, 3, 22), MyDate(2018, 1, 1), MyDate(2019, 1, 1), shouldBeInRange = false)
     }
     @Test fun `test if a date is after a range`() {
-        doTest(MyDate(2019, 3, 22), MyDate(2018, 1, 1), MyDate(2019, 1, 1), shouldBeInRange = false)
+        doTest1(MyDate(2019, 3, 22), MyDate(2018, 1, 1), MyDate(2019, 1, 1), shouldBeInRange = false)
+    }
+
+    // Test RangeTo.kt
+    fun doTest(date: MyDate, first: MyDate, last: MyDate, shouldBeInRange: Boolean) {
+        val message = ""
+        Assert.assertEquals(message, shouldBeInRange, checkInRange(date, first, last))
+    }
+    @Test fun `test if a date should be in a range`() {
+        doTest(MyDate(2014, 3, 22), MyDate(2014, 1, 1), MyDate(2015, 1,1), shouldBeInRange = true)
     }
 }
