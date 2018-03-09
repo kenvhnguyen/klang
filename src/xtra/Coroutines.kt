@@ -29,9 +29,17 @@ val fibonacci = buildSequence {
 }
 
 
+/**
+ * mocking some long-running operation (network IO, file IO, CPU or GPU intensive work, etc)
+ * */
 suspend fun expensiveComputation(res: MutableList<String>) {
-    delay(10000L) // delay() is a suspend function that will block
+    delay(10000L) // delay() is a suspend function that will block, this could mimic any long-running operation
     res.add("word!")
+}
+
+suspend fun someExpensiveComputation(delay: Long) {
+    println("Thread ${Thread.currentThread().id} is running...")
+    delay(delay)
 }
 
 fun main(args: Array<String>) {
